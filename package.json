@@ -1,0 +1,23 @@
+{
+  "name": "stayease-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "StayEase - Hotel Reservation & Management System",
+  "scripts": {
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "db:start": "npm --prefix server run db:start",
+    "db:migrate": "npm --prefix server run prisma:migrate",
+    "db:generate": "npm --prefix server run prisma:generate",
+    "db:seed": "npm --prefix server run prisma:seed",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"SERVER,CLIENT\" -c \"blue.bold,green.bold\" \"npm run dev:server\" \"npm run dev:client\"",
+    "build:server": "npm --prefix server run build",
+    "build:client": "npm --prefix client run build",
+    "build": "npm run build:server && npm run build:client",
+    "test": "npm --prefix server run test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
